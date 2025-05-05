@@ -5,12 +5,15 @@ on:
     branches:
       - 'next'
       - 'main'
+      - 'test-release'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+
+  # Create a release pull request on the main branch
   release:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test-release'
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -22,6 +25,9 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
+        with:
+          createGithubReleases: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test-release' }}
+          publish: pnpm changeset:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -45,6 +51,7 @@ jobs:
         run: pnpm --dir apps/docs deploy:fleek
 
   deploy-registry:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

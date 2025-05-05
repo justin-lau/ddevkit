@@ -1,5 +1,14 @@
 # @geist/storybook
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [a5e3bf1]
+  - @geist/ui-react@0.1.0
+  - @geist/graphql@0.1.0
+  - @geist/domain@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes

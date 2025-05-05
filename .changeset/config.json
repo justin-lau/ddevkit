@@ -7,5 +7,12 @@
 	"access": "restricted",
 	"baseBranch": "main",
 	"updateInternalDependencies": "patch",
+	"privatePackages": {
+		"version": true,
+		"tag": true,
+		"@geist/typescript-config": {
+			"tag": false
+		}
+	},
 	"ignore": []
 }

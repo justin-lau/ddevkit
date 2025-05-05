@@ -1,7 +1,7 @@
 {
 	"name": "@geist/domain",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"exports": {
 		".": "./src/index.ts",
 		"./*.fixture": ["./src/*.fixture.ts"],
